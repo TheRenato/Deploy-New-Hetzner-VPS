@@ -1,1 +1,13 @@
-// First commit
+stages:
+  - containerize-dev
+  - deploy-dev
+
+containerize-api-dev:
+  stage: containerize-dev
+  image:
+    name: renato81/ansible-in-docker
+    entrypoint: [""]
+  script:
+    - ansible --help
+  #rules:
+  #  - if: $CI_COMMIT_TAG
