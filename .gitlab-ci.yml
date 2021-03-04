@@ -8,7 +8,6 @@ containerize-api-dev:
     name: renato81/ansible-in-docker
     entrypoint: [""]
   script:
-    - ansible-galaxy collection --help
-    - ansible-galaxy role --help
+    - ansible-galaxy collection install hetzner.hcloud
   #rules:
   #  - if: $CI_COMMIT_TAG
