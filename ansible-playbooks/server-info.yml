@@ -1,7 +1,10 @@
+hosts: localhost
+tasks:
+ - hetzner.hcloud.hcloud_server
+   - name: Gather hcloud datacenter info
+     hcloud_datacenter_info:
+     register: output
 
-- name: Gather hcloud datacenter info
-  hcloud_datacenter_info:
-  register: output
-- name: Print the gathered info
-  debug:
-    var: output
+   - name: Print the gathered info
+     debug:
+     - var: output
