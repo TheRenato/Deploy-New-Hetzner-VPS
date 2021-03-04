@@ -8,6 +8,7 @@ containerize-api-dev:
     name: renato81/ansible-in-docker
     entrypoint: [""]
   script:
-    - ansible-galaxy --help
+    - ansible-galaxy collection --help
+    - ansible-galaxy role --help
   #rules:
   #  - if: $CI_COMMIT_TAG
