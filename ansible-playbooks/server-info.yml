@@ -1,6 +1,6 @@
 ---
 - hosts: localhost
-  tasks:
+- tasks:
     - hetzner.hcloud.hcloud_server
         - name: Gather hcloud datacenter info
           hcloud_datacenter_info:
