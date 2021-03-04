@@ -1,13 +1,13 @@
 stages:
-  - containerize-dev
-  - deploy-dev
+  - ansible
 
-containerize-api-dev:
-  stage: containerize-dev
+ansible:
+  stage: ansible
   image:
     name: renato81/ansible-in-docker
     entrypoint: [""]
   script:
     - ansible-galaxy collection install hetzner.hcloud
+    - ansible-playbook ansible-playbooks/server-info.yml
   #rules:
   #  - if: $CI_COMMIT_TAG
