@@ -14,8 +14,7 @@ ansible:
     name: cytopia/ansible:latest-tools
     entrypoint: [""]
   script:
-    - ansible --version | grep "python version"
-    - pip3 install hcloud-python
+    - pip3 install pip
     - ansible-playbook ansible-playbooks/server-info.yml
   #rules:
   #  - if: $CI_COMMIT_TAG
