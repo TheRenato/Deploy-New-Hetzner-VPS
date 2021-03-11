@@ -14,6 +14,7 @@ ansible:
     name: cytopia/ansible:latest
     entrypoint: [""]
   script:
+    - echo $API_HETZNER
     - pip3 install hcloud
     - ansible-playbook ansible-playbooks/server-info.yml
   #rules:
