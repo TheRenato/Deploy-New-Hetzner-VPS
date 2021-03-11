@@ -15,7 +15,7 @@ ansible:
     entrypoint: [""]
   script:
     - ansible --version | grep "python version"
-    #- pip3 hcloud-python
+    - pip3 pip
     - ansible-playbook ansible-playbooks/server-info.yml
   #rules:
   #  - if: $CI_COMMIT_TAG
