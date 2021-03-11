@@ -24,4 +24,4 @@
       register: output
     - name: Print the gathered infos
       debug:
-        var: output.hcloud_server_info  
+        var: output.hcloud_server_info
