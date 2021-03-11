@@ -7,9 +7,9 @@
   tasks:
     - name: hetzner info
       hetzner.hcloud.hcloud_datacenter_info:
-        api_token: $api_hetzner
     - name: Gather hcloud datacenter info
       hcloud_datacenter_info:
+        api_token: $api_hetzner
       register: output
     - name: Print the gathered info
       debug:
