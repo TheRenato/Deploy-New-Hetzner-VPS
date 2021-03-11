@@ -1,7 +1,7 @@
 ---
 - hosts: localhost
   vars:
-      ansible_python_interpreter: "/usr/bin/env python"
+      ansible_python_interpreter: "/usr/bin/python3"
   collections:
     - hetzner.hcloud
   tasks:
