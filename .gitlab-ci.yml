@@ -10,7 +10,7 @@ ansible-lint:
 
 
 ansible:
-  stage: ansible
+  stage: ansible-job
   image:
     name: renato81/ansible-in-docker
     entrypoint: [""]
