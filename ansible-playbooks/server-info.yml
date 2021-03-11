@@ -7,7 +7,7 @@
   tasks:
     - name: hetzner info
       hetzner.hcloud.hcloud_datacenter_info:
-        api_token: "{{ API_HETZNER }}"
+        api_token: "{{ lookup('env','API_HETZNER') }}"
     - name: Gather hcloud datacenter info
       hcloud_datacenter_info:
       register: output
