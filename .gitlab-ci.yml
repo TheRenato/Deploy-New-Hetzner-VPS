@@ -15,6 +15,7 @@ ansible:
     entrypoint: [""]
   script:
     - pip3 install pip
+    - pip install --upgrade pip
     - ansible-playbook ansible-playbooks/server-info.yml
   #rules:
   #  - if: $CI_COMMIT_TAG
