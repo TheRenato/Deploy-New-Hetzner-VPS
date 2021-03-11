@@ -10,4 +10,4 @@
       
     - name: Print the gathered info
       debug:
-        var: output
+      - var: output
