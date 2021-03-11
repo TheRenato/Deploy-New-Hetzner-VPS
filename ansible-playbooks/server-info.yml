@@ -5,9 +5,6 @@
   collections:
     - hetzner.hcloud
   tasks:
-    - name: Print the token
-      debug:
-        var: "${API_HETZNER}"
     - name: hetzner info
       hetzner.hcloud.hcloud_datacenter_info:
         api_token: "{{ API_HETZNER }}"
