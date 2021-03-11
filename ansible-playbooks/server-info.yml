@@ -3,7 +3,7 @@
   collections:
     - hetzner.hcloud
   tasks:
-  - hetzner.hcloud.hcloud_datacenter_info:
+    - hetzner.hcloud.hcloud_datacenter_info:
     - name: Gather hcloud datacenter info
       hcloud_datacenter_info:
       register: output
