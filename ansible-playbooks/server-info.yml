@@ -3,12 +3,13 @@
   vars:
       ansible_python_interpreter: "/usr/bin/python3"
       api_key: "{{ lookup('env','API_HETZNER') }}"
+      home: "{{ lookup('env','HOME') }}"
   collections:
     - hetzner.hcloud
   tasks:
     - name: Printing the environment​ variable in Ansible
       debug:
-        msg: "{{ lookup('env','HOME') }}"
+        msg: "{{ home }}"
     - name: hetzner info
       hetzner.hcloud.hcloud_datacenter_info:
         api_token: "{{ api_key }}"
