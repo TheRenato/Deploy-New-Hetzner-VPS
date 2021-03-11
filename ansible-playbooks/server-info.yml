@@ -17,7 +17,7 @@
       debug:
         var: output
     - name: hetzner server info
-    - hetzner.hcloud.hcloud_server_info:
+      hetzner.hcloud.hcloud_server_info:
     - name: Gather hcloud server infos
       hcloud_server_info:
         api_token: "{{ api_key }}"
