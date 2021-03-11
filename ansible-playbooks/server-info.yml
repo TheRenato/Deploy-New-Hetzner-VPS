@@ -1,7 +1,8 @@
 ---
 - hosts: localhost
   tasks:
-    - hetzner.hcloud.hcloud_datacenter_info:
+    - name: Hetzner
+      hetzner.hcloud.hcloud_datacenter_info:
         - name: Gather hcloud datacenter info
           hcloud_datacenter_info:
             register: output
