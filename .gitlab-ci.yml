@@ -14,7 +14,6 @@ ansible:
     name: cytopia/ansible:latest
     entrypoint: [""]
   script:
-    - where pip
     - ansible-playbook ansible-playbooks/server-info.yml
   #rules:
   #  - if: $CI_COMMIT_TAG
