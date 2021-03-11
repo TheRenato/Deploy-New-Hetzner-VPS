@@ -2,12 +2,12 @@
 - hosts: localhost
   vars:
       ansible_python_interpreter: "/usr/bin/python3"
-      api_token: "${API_HETZNER}"
   collections:
     - hetzner.hcloud
   tasks:
     - name: hetzner info
       hetzner.hcloud.hcloud_datacenter_info:
+        api_token: "${API_HETZNER}"
     - name: Gather hcloud datacenter info
       hcloud_datacenter_info:
       register: output
