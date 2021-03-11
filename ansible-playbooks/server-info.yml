@@ -6,9 +6,6 @@
   collections:
     - hetzner.hcloud
   tasks:
-    - name: Multiple environment​ variables in a single line ansible task
-      debug:
-        msg: "{{ api_key }}"
     - name: hetzner info
       hetzner.hcloud.hcloud_datacenter_info:
         api_token: "{{ api_key }}"
