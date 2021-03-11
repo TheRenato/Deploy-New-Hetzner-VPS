@@ -5,7 +5,7 @@
     hetzner.hcloud.hcloud_datacenter_info:
     - name: Gather hcloud datacenter info
       hcloud_datacenter_info:
-        register: output
+      register: output
     - name: Print the gathered info
       debug:
         var: output
