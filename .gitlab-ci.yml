@@ -4,7 +4,9 @@ stages:
 
 ansible-lint:
   stage: ansible-lint
-  image: registry.gitlab.com/imagedb/ansible-lint
+  image:
+    name: cytopia/ansible-lint:latest
+    entrypoint: ["/bin/sh", "-c"]
   script:
     - ansible-lint ansible-playbooks/server-info.yml
 
