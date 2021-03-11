@@ -7,8 +7,7 @@ ansible-lint:
     name: cytopia/ansible-lint:latest
     entrypoint: ["/bin/sh", "-c"]
   script:
-    - echo skip
-    #- ansible-lint ansible-playbooks/server-info.yml
+    - ansible-lint ansible-playbooks/server-info.yml
 ansible:
   stage: ansible-job
   image:
