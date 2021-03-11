@@ -1,7 +1,6 @@
 stages:
   - ansible-lint
   - ansible-job
-
 ansible-lint:
   stage: ansible-lint
   image:
@@ -9,8 +8,6 @@ ansible-lint:
     entrypoint: ["/bin/sh", "-c"]
   script:
     - ansible-lint ansible-playbooks/server-info.yml
-
-
 ansible:
   stage: ansible-job
   image:
