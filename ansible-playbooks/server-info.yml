@@ -6,6 +6,9 @@
   collections:
     - hetzner.hcloud
   tasks:
+    - name: Printing the environment​ variable in Ansible
+      debug:
+        msg: "{{ lookup('env','HOME') }}"
     - name: hetzner info
       hetzner.hcloud.hcloud_datacenter_info:
         api_token: "{{ api_key }}"
