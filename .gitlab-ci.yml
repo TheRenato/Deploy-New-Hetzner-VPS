@@ -1,5 +1,13 @@
 stages:
-  - ansible
+  - ansible-lint
+  - ansible-job
+
+ansible-lint:
+  stage: ansible-lint
+  image: registry.gitlab.com/imagedb/ansible-lint
+  script:
+    - ansible-lint ansible-playbooks/server-info.yml
+
 
 ansible:
   stage: ansible
