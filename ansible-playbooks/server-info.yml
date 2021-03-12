@@ -26,3 +26,11 @@
     - name: Print the gathered infos
       debug:
         var: output.hcloud_server_info
+    - name: hetzner server type info
+      hetzner.hcloud.hcloud_server_type_info:
+    - name: Gather hcloud server type infos
+      hcloud_server_type_info:
+      register: output
+    - name: Print the gathered infos
+      debug:
+        var: output.hcloud_server_type_info
