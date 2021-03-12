@@ -28,6 +28,7 @@
         var: output.hcloud_server_info
     - name: hetzner server type info
       hetzner.hcloud.hcloud_server_type_info:
+        api_token: "{{ api_key }}"
     - name: Gather hcloud server type infos
       hcloud_server_type_info:
         api_token: "{{ api_key }}"
