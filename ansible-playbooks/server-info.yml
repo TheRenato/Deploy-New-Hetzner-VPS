@@ -24,7 +24,7 @@
       register: output
     - name: Print the gathered infos
       debug:
-        var: output.hcloud_server_info
+        var: output.hcloud_server_info.name
     - name: hetzner server type info
       hetzner.hcloud.hcloud_server_type_info:
         api_token: "{{ api_key }}"
