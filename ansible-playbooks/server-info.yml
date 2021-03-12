@@ -1,7 +1,6 @@
 ---
 - hosts: localhost
   vars:
-   #   ansible_python_interpreter: "/usr/bin/python3"
       api_key: "{{ lookup('env','API_HETZNER') }}"
   collections:
     - hetzner.hcloud
@@ -26,3 +25,13 @@
     - name: Print the gathered infos
       debug:
         var: output.hcloud_server_info
+    - name: hetzner server type info
+      hetzner.hcloud.hcloud_server_type_info:
+        api_token: "{{ api_key }}"
+    - name: Gather hcloud server type infos
+      hcloud_server_type_info:
+        api_token: "{{ api_key }}"
+      register: output
+    - name: Print the gathered infos
+      debug:
+        var: output.hcloud_server_type_info
