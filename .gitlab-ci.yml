@@ -15,8 +15,6 @@ ansible:
     entrypoint: [""]
   script:
     - pip3 install hcloud
-    - ansible-playbook ansible-playbooks/getDatacenterInfo.yml
-    - ansible-playbook ansible-playbooks/getServerTypeInfo.yml
-    - ansible-playbook ansible-playbooks/getServersInfoByName.yml
+    - ansible-playbook ansible-playbooks/start.yml
   #rules:
   #  - if: $CI_COMMIT_TAG

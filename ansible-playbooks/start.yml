@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+
+- name:
+  import_playbook: ./getDatacenterInfo.yml
+
+- name:
+  import_playbook: ./getServerTypeInfo.yml
+
+- name:
+  import_playbook: ./getServerByName.yml
