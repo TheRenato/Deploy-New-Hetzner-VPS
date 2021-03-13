@@ -1,0 +1,20 @@
+
+---
+- hosts: localhost
+  vars:
+      api_key: "{{ lookup('env','API_HETZNER') }}"
+      server_name: "{{ lookup('env','CI_PROJECT_NAME') }}"
+  collections:
+    - hetzner.hcloud
+  tasks:
+    - name: hetzner server info
+      hetzner.hcloud.hcloud_server_info:
+        api_token: "{{ api_key }}"
+    - name: Gather hcloud server infos
+      hcloud_server_info:
+        api_token: "{{ api_key }}"
+        name: "{{ server_name }}"
+      register: output
+    - name: Print the gathered infos
+      debug:
+        var: output.hcloud_server_info
