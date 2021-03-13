@@ -8,4 +8,4 @@
   import_playbook: ./getServerTypeInfo.yml
 
 - name:
-  import_playbook: ./getServerByName.yml
+  import_playbook: ./getServerInfoByName.yml
