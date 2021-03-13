@@ -17,7 +17,7 @@ ansible:
   script:
     - pip3 install hcloud
     - ansible-playbook ansible-playbooks/start.yml
-  except:
+  only:
     variables:
       - $DO_THIS == "get all info"
   #rules:
