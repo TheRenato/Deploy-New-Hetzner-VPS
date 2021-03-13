@@ -1,6 +1,7 @@
 stages:
   - ansible-lint
   - ansible-job
+  - getServer
 ansible-lint:
   stage: ansible-lint
   image:
@@ -16,5 +17,19 @@ ansible:
   script:
     - pip3 install hcloud
     - ansible-playbook ansible-playbooks/start.yml
+  except:
+    variables:
+      - $GET_INFO
   #rules:
   #  - if: $CI_COMMIT_TAG
+getServer:
+  stage: getServer
+  image:
+    name: cytopia/ansible:latest
+    entrypoint: [""]
+  script:
+    - pip3 install hcloud
+    - ansible-playbook ansible-playbooks/getServerInfoByName.yml
+  only:
+    variables:
+      - $GET_INFO
