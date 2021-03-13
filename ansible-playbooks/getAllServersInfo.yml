@@ -5,13 +5,13 @@
   collections:
     - hetzner.hcloud
   tasks:
-    - name: hetzner server info
+    - name: hetzner servers info
       hetzner.hcloud.hcloud_server_info:
         api_token: "{{ api_key }}"
-    - name: Gather hcloud server infos
+    - name: Gather hcloud servers infos
       hcloud_server_info:
         api_token: "{{ api_key }}"
       register: output
-    - name: Print the gathered infos
+    - name: Print all the servers gathered infos
       debug:
         var: output.hcloud_server_info
