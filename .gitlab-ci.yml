@@ -1,6 +1,6 @@
 stages:
   - ansible-lint
-  - ansible-job
+  - getAllInfo
   - getServer
   - getServerIp
   - createServer
@@ -13,8 +13,8 @@ ansible-lint:
     entrypoint: ["/bin/sh", "-c"]
   script:
     - ansible-lint ansible-playbooks/*
-ansible:
-  stage: ansible-job
+getAllInfo:
+  stage: getAllInfo
   image:
     name: cytopia/ansible:latest
     entrypoint: [""]
