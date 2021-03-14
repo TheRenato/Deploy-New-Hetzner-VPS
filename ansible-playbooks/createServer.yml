@@ -1,0 +1,20 @@
+---
+- hosts: localhost
+  vars:
+      api_key: "{{ lookup('env','API_HETZNER') }}"
+      server_name: "{{ lookup('env','CI_PROJECT_NAME') }}"
+  collections:
+    - hetzner.hcloud
+  tasks:
+    - name: hetzner servers info
+      hetzner.hcloud.hcloud_server:
+        api_token: "{{ api_key }}"
+    - name: Create a basic server with ssh key
+      hcloud_server:
+        name: "{{ server_name }}"
+        server_type: cx11
+        image: ubuntu-18.04
+        location: fsn1
+        ssh_keys:
+        - gitlab_key
+        state: present
