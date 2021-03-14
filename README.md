@@ -37,3 +37,5 @@ And that variable should have this values:
 
  * SSH to server and make it do stuff.
  * Add Swap file to the server
+ * Add backup job
+ * Perform backups at x times
