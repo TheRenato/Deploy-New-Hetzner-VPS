@@ -3,6 +3,7 @@ stages:
   - ansible-job
   - getServer
   - createServer
+  - deleteServer
 ansible-lint:
   stage: ansible-lint
   image:
@@ -41,7 +42,20 @@ createServer:
     entrypoint: [""]
   script:
     - pip3 install hcloud
+    - ansible-playbook ansible-playbooks/createServer.yml
     - ansible-playbook ansible-playbooks/getServerInfoByName.yml
   only:
     variables:
       - $DO_THIS == "create server"
+deleteServer:
+  stage: deleteServer
+  image:
+    name: cytopia/ansible:latest
+    entrypoint: [""]
+  script:
+    - pip3 install hcloud
+    - ansible-playbook ansible-playbooks/destroyServer.yml
+    - ansible-playbook ansible-playbooks/getServerInfoByName.yml
+  only:
+    variables:
+      - $DO_THIS == "delete server"
