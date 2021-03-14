@@ -44,6 +44,7 @@ getServerIp:
     entrypoint: [""]
   script:
     - pip3 install hcloud
+    - pip install jmespath
     - ansible-playbook ansible-playbooks/getServerIP.yml
   only:
     variables:
