@@ -9,8 +9,8 @@
     - name: hetzner servers info
       hetzner.hcloud.hcloud_server:
         api_token: "{{ api_key }}"
-- name: Ensure the server is absent (remove if needed)
-  hcloud_server:
-    api_token: "{{ api_key }}"
-    name: my-server
-    state: absent
+    - name: Ensure the server is absent (remove if needed)
+      hcloud_server:
+        api_token: "{{ api_key }}"
+        name: my-server
+        state: absent
