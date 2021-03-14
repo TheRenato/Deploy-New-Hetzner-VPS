@@ -1,0 +1,20 @@
+---
+- hosts: localhost
+  vars:
+      api_key: "{{ lookup('env','API_HETZNER') }}"
+      server_name: "{{ lookup('env','CI_PROJECT_NAME') }}"
+  collections:
+    - hetzner.hcloud
+  tasks:
+    - name: hetzner server info
+      hetzner.hcloud.hcloud_server_info:
+        api_token: "{{ api_key }}"
+    - name: Gather hcloud server info about one server.
+      hcloud_server_info:
+        api_token: "{{ api_key }}"
+        name: "{{ server_name }}"
+      register: jsoncontent
+    - name: Print the gathered info about that server
+      debug: msg="{{ jsoncontent.hcloud_server_info.json | json_query(jmesquery)}}"
+      vars:
+        jmesquery: "[*].ipv4_address"

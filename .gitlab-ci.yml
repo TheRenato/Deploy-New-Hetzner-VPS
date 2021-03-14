@@ -2,6 +2,7 @@ stages:
   - ansible-lint
   - ansible-job
   - getServer
+  - getServerIp
   - createServer
   - deleteServer
   - restartServer
@@ -36,6 +37,17 @@ getServer:
   only:
     variables:
       - $DO_THIS == "get info"
+getServerIp:
+  stage: getServerIp
+  image:
+    name: cytopia/ansible:latest
+    entrypoint: [""]
+  script:
+    - pip3 install hcloud
+    - ansible-playbook ansible-playbooks/getServerIP.yml
+  only:
+    variables:
+      - $DO_THIS == "get ip"
 createServer:
   stage: createServer
   image:

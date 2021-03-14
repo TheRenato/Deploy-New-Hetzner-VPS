@@ -16,21 +16,31 @@ The ENV that will be used are:
 * HETZNER_SERVER_TYPE: This should also be in the set in the GitLab project settings.
 
 The HETZNER variables is set in the settings just so you don't need to look in the file where to change them.
+
 Go to: [Settings] -> [CI/CD] -> [Variables] to add/change those variables
 
 
 The only job that will run in evry commit is the ansible lint job.
+
 All other jobs must be run in CI/CD -> Pipelines -> RUN and with the right variable value.
 
 The variable that should be set there is:
+
 DO_THIS
 
 And that variable should have this values:
-- get all info    To get all information from Hetzner.
-- get info        To just get server information.
-- create server   To create your server
-- delete server   To delete your server
-- restart server  To reboot/restart your server.
+
+get all info    To get all information from Hetzner.
+
+get info        To get server information.
+
+get ip          To get server IP.
+
+create server   To create your server
+
+delete server   To delete your server
+
+restart server  To reboot/restart your server.
 
 
 ## ToDo
