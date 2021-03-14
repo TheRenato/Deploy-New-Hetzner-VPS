@@ -4,6 +4,7 @@ stages:
   - getServer
   - createServer
   - deleteServer
+  - restartServer
 ansible-lint:
   stage: ansible-lint
   image:
@@ -59,3 +60,14 @@ deleteServer:
   only:
     variables:
       - $DO_THIS == "delete server"
+restartServer:
+  stage: restartServer
+  image:
+    name: cytopia/ansible:latest
+    entrypoint: [""]
+  script:
+    - pip3 install hcloud
+    - ansible-playbook ansible-playbooks/restartServer.yml
+  only:
+    variables:
+      - $DO_THIS == "restart server"

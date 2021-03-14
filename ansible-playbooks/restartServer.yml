@@ -1,0 +1,12 @@
+- hosts: localhost
+  vars:
+      api_key: "{{ lookup('env','API_HETZNER') }}"
+      server_name: "{{ lookup('env','CI_PROJECT_NAME') }}"
+  collections:
+    - hetzner.hcloud
+  tasks:
+    - name: Ensure the server is restarted
+      hetzner.hcloud.hcloud_server:
+        api_token: "{{ api_key }}"
+        name: "{{ server_name }}"
+        state: restarted
