@@ -16,4 +16,4 @@
       register: result
     - name: Print the gathered info about that server
       debug:
-        var: "{{ result.hcloud_server_info.json | list }}"
+        msg: "{{ result.hcloud_server_info.json | list }}"
