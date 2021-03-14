@@ -2,6 +2,7 @@ stages:
   - ansible-lint
   - ansible-job
   - getServer
+  - createServer
 ansible-lint:
   stage: ansible-lint
   image:
@@ -33,3 +34,14 @@ getServer:
   only:
     variables:
       - $DO_THIS == "get info"
+createServer:
+  stage: createServer
+  image:
+    name: cytopia/ansible:latest
+    entrypoint: [""]
+  script:
+    - pip3 install hcloud
+    - ansible-playbook ansible-playbooks/getServerInfoByName.yml
+  only:
+    variables:
+      - $DO_THIS == "create server"
