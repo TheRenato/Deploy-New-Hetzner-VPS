@@ -6,11 +6,8 @@
   collections:
     - hetzner.hcloud
   tasks:
-    - name: hetzner servers info
+    - name: Ensure the server is absent (remove if needed)
       hetzner.hcloud.hcloud_server:
         api_token: "{{ api_key }}"
-    - name: Ensure the server is absent (remove if needed)
-      hcloud_server:
-        api_token: "{{ api_key }}"
-        name: my-server
+        name: "{{ server_name }}"
         state: absent
