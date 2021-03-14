@@ -7,7 +7,10 @@ stages:
   - deleteServer
   - restartServer
 ansible-lint:
-  stage: ansible-lint
+  stage: ansible-lint    
+  only:
+    changes:
+      - ansible-playbooks/*
   image:
     name: cytopia/ansible-lint:latest
     entrypoint: ["/bin/sh", "-c"]
