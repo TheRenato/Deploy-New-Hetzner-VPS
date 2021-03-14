@@ -17,4 +17,4 @@
     - name: Print the gathered info about that server
       debug: msg="{{ jsoncontent.json | json_query(jmesquery) }}"
       vars:
-        jmesquery: "[*].hcloud_server_info"
+        jmesquery: "[*].ipv4_address"
