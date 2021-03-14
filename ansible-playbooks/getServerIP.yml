@@ -13,8 +13,7 @@
       hcloud_server_info:
         api_token: "{{ api_key }}"
         name: "{{ server_name }}"
-      register: jsoncontent
+      register: result
     - name: Print the gathered info about that server
-      debug: msg="{{ jsoncontent.json | json_query(jmesquery) }}"
-      vars:
-        jmesquery: "[*]"
+      debug:
+        var: "{{ result.json | list }}"
