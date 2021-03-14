@@ -15,6 +15,6 @@
         name: "{{ server_name }}"
       register: jsoncontent
     - name: Print the gathered info about that server
-      debug: msg="{{ jsoncontent.hcloud_server_info.json | json_query(jmesquery) }}"
+      debug: msg="{{ jsoncontent.json | json_query(jmesquery) }}"
       vars:
-        jmesquery: "[*].ipv4_address"
+        jmesquery: "[*].hcloud_server_info[*].ipv4_address"
