@@ -26,11 +26,11 @@ The variable that should be set there is:
 DO_THIS
 
 And that variable should have this values:
-get all info    To get all information from Hetzner.
-get info        To just get server information.
-create server   To create your server
-delete server   To delete your server
-restart server  To reboot/restart your server.
+- get all info    To get all information from Hetzner.
+- get info        To just get server information.
+- create server   To create your server
+- delete server   To delete your server
+- restart server  To reboot/restart your server.
 
 
 ## ToDo
