@@ -16,6 +16,6 @@
       register: output
     - name: Set IP as fact
       set_fact: host_ip="{{ output.hcloud_server_info[0].ipv4_address }}"
-    - name: Debug
+    - name: Print IP
       debug:
         msg: "{{ host_ip }}"
