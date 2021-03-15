@@ -14,6 +14,9 @@
         api_token: "{{ api_key }}"
         name: "{{ server_name }}"
       register: output
-    - name: Print the gathered info about that server
+    - name: Set IP as fact
+      set_fact: host_ip={{ output.hcloud_server_info[0].ipv4_address }}
+    - name: Debug
       debug:
-        msg: {{ output.hcloud_server_info[0].ipv4_address }}
+        var: {{ host_ip }}
+      
