@@ -47,7 +47,6 @@ getServerIp:
     entrypoint: [""]
   script:
     - pip3 install hcloud
-    - pip3 install jmespath
     - ansible-playbook ansible-playbooks/getServerIP.yml
   only:
     variables:
@@ -59,7 +58,10 @@ createServer:
     entrypoint: [""]
   script:
     - pip3 install hcloud
+    - echo "$SSH_KEY" | base64 --decode > /root/.ssh/id_rsa
     - ansible-playbook ansible-playbooks/createServer.yml
+    - ansible-playbook ansible-playbooks/getServerIP.yml
+    - ansible-playbook ansible-playbooks/create_server_user.yml
     - ansible-playbook ansible-playbooks/getServerInfoByName.yml
   only:
     variables:
