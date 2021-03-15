@@ -63,8 +63,9 @@ createServer:
     - echo "$SSH_KEY" > ~/.ssh/id_rsa
     - ansible-playbook ansible-playbooks/createServer.yml
     - ansible-playbook ansible-playbooks/getServerIP.yml
-    - ansible-playbook ansible-playbooks/create_server_user.yml
-    - ansible-playbook ansible-playbooks/getServerInfoByName.yml
+    - ls ~/ -Al
+    #- ansible-playbook ansible-playbooks/create_server_user.yml
+    #- ansible-playbook ansible-playbooks/getServerInfoByName.yml
   only:
     variables:
       - $DO_THIS == "create server"
