@@ -34,7 +34,7 @@ And that variable should have this values:
 
 **get info**        To get server information.
 
-**get ip**          To get server IP.
+**get ip**          To get server IP and it will save it as a variable *host_ip*.
 
 **create server**   To create your server
 
