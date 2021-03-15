@@ -15,8 +15,8 @@
         name: "{{ server_name }}"
       register: output
     - name: Set IP as fact
-      set_fact: host_ip={{ output.hcloud_server_info[0].ipv4_address }}
+      set_fact: host_ip="{{ output.hcloud_server_info[0].ipv4_address }}"
     - name: Debug
       debug:
-        var: {{ host_ip }}
+        var: "{{ host_ip }}"
       
