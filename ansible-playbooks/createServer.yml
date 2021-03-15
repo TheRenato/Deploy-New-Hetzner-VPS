@@ -16,3 +16,13 @@
         ssh_keys:
         - gitlab_key
         state: present
+    - name: Update the inventory
+      hetzner.hcloud.hcloud:
+        token_env: API_HETZNER
+        keyed_groups:
+          - key: location
+            prefix: hcloud_location
+          - key: image_os_flavor
+            separator: ""
+          - key: status
+            prefix: server_status
