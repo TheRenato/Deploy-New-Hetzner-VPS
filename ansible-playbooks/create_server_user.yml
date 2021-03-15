@@ -33,7 +33,6 @@
     - name: Print the created user.
       shell: id "{{ new_user }}"
       register: new_user_created
-
     - debug:
         msg: "{{ new_user_created.stdout_lines[0] }}"
 ...
