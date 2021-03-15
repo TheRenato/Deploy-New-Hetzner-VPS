@@ -18,4 +18,4 @@
       set_fact: host_ip="{{ output.hcloud_server_info[0].ipv4_address }}"
     - name: Debug
       debug:
-        var: "{{ host_ip }}"
+        msg: "{{ host_ip }}"
