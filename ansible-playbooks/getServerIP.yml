@@ -19,4 +19,3 @@
     - name: Debug
       debug:
         var: "{{ host_ip }}"
-      
