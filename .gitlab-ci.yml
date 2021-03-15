@@ -60,7 +60,7 @@ createServer:
     - pip3 install hcloud
     - mkdir ~/.ssh
     - ls ~/ -Al
-    - echo "$SSH_KEY" | base64 --decode > ~/.ssh/id_rsa
+    - echo "$SSH_KEY" > ~/.ssh/id_rsa
     - ansible-playbook ansible-playbooks/createServer.yml
     - ansible-playbook ansible-playbooks/getServerIP.yml
     - ansible-playbook ansible-playbooks/create_server_user.yml
