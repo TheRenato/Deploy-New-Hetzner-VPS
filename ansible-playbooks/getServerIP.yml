@@ -16,4 +16,4 @@
       register: output
     - name: Print the gathered info about that server
       debug:
-        var: output.hcloud_server_info[0].ipv4_address
+        msg: output.hcloud_server_info[0].ipv4_address
