@@ -1,5 +1,5 @@
 ---
-- hosts: "{{ host_ip }}"
+- hosts: your_server
   become: yes
   vars:
       new_user: gitlab_user
