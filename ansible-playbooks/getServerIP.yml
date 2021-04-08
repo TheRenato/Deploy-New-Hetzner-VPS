@@ -19,3 +19,9 @@
     - name: Print IP
       debug:
         msg: "{{ host_ip }}"
+    - name: Creating a file with content
+      copy:
+        dest: "~/inventory.ini"
+        content: |
+          [webservers]
+          "{{ host_ip }}"
