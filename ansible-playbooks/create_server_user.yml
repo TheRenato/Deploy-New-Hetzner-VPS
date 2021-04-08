@@ -1,5 +1,5 @@
 ---
-- hosts: your_server
+- hosts: yourserver
   become: yes
   vars:
       new_user: gitlab_user

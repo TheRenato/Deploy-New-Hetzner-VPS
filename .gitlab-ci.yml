@@ -48,7 +48,6 @@ getServerIp:
   script:
     - pip3 install hcloud
     - ansible-playbook ansible-playbooks/getServerIP.yml
-    - cat ~/inventory.ini
   only:
     variables:
       - $DO_THIS == "get ip"
@@ -57,15 +56,16 @@ createServer:
   image:
     name: cytopia/ansible:latest
     entrypoint: [""]
-  script:
+  before_script:
     - pip3 install hcloud
-    - mkdir ~/.ssh
-    - ls ~/ -Al
+    - echo "$SSH_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+  script:
     #- echo "$SSH_KEY" > ~/.ssh/id_rsa
     - ansible-playbook ansible-playbooks/createServer.yml
     - ansible-playbook ansible-playbooks/getServerIP.yml
-    - ls ~/ -Al
-    #- ansible-playbook ansible-playbooks/create_server_user.yml
+    - ansible-playbook ansible-playbooks/create_server_user.yml
     #- ansible-playbook ansible-playbooks/getServerInfoByName.yml
   only:
     variables:
