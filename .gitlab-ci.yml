@@ -48,7 +48,6 @@ getServerIp:
   script:
     - pip3 install hcloud
     - ansible-playbook ansible-playbooks/getServerIP.yml
-    - echo "$YOURSERVER"
   only:
     variables:
       - $DO_THIS == "get ip"
@@ -62,17 +61,13 @@ createServer:
     - apk add openssh-client
     - mkdir -p ~/.ssh
     - eval $(ssh-agent -s)
-    #- echo "$SSH_KEY" | tr -d '\r' | ssh-add -
-    #- ssh-add <(echo "$SSH_KEY" | base64 -d)
     - echo "$SSH_KEY" | base64 -d > ~/.ssh/id_rsa
     - chmod 600 ~/.ssh/id_rsa
     - ssh-add ~/.ssh/id_rsa
-    #- chmod 700 ~/.ssh
   script:
-    #- echo "$SSH_KEY" > ~/.ssh/id_rsa
     - ansible-playbook ansible-playbooks/createServer.yml
     - ansible-playbook ansible-playbooks/getServerIP.yml
-    - ansible-playbook ansible-playbooks/create_server_user.yml -i ~/inventory.ini
+    - ansible-playbook ansible-playbooks/create_server_user.yml -i ~/inventory.ini 
     #- ansible-playbook ansible-playbooks/getServerInfoByName.yml
   only:
     variables:

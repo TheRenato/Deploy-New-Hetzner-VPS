@@ -1,6 +1,7 @@
 ---
 - hosts: yourserver
   become: yes
+  become_user: root
   vars:
       new_user: gitlab_user
   tasks:
