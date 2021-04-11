@@ -67,6 +67,7 @@ createServer:
   script:
     - ansible-playbook ansible-playbooks/createServer.yml
     - ansible-playbook ansible-playbooks/getServerIP.yml
+    - export ANSIBLE_HOST_KEY_CHECKING=False
     - ansible-playbook ansible-playbooks/create_server_user.yml -i ~/inventory.ini 
     #- ansible-playbook ansible-playbooks/getServerInfoByName.yml
   only:
