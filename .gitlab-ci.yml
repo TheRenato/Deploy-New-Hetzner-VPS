@@ -72,7 +72,7 @@ createServer:
     #- echo "$SSH_KEY" > ~/.ssh/id_rsa
     - ansible-playbook ansible-playbooks/createServer.yml
     - ansible-playbook ansible-playbooks/getServerIP.yml
-    - ansible-playbook ansible-playbooks/create_server_user.yml -i inventory.ini
+    - ansible-playbook ansible-playbooks/create_server_user.yml -i ~/inventory.ini
     #- ansible-playbook ansible-playbooks/getServerInfoByName.yml
   only:
     variables:
