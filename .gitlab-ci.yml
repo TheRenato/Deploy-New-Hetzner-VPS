@@ -64,8 +64,9 @@ createServer:
     #- echo "$SSH_KEY" | tr -d '\r' | ssh-add -
     #- ssh-add <(echo "$SSH_KEY" | base64 -d)
     - echo "$SSH_KEY" | base64 -d > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
     - ssh-add ~/.ssh/id_rsa
-    - chmod 700 ~/.ssh
+    #- chmod 700 ~/.ssh
   script:
     #- echo "$SSH_KEY" > ~/.ssh/id_rsa
     - ansible-playbook ansible-playbooks/createServer.yml
