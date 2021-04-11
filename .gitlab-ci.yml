@@ -58,6 +58,7 @@ createServer:
     entrypoint: [""]
   before_script:
     - pip3 install hcloud
+    - apk add openssh-client
     - echo "$SSH_KEY" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
