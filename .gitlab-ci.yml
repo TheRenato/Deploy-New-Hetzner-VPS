@@ -48,7 +48,7 @@ getServerIp:
   script:
     - pip3 install hcloud
     - ansible-playbook ansible-playbooks/getServerIP.yml
-    - echo $YOURSERVER
+    - $YOURSERVER
   only:
     variables:
       - $DO_THIS == "get ip"
