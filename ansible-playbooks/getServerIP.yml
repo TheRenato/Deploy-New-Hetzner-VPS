@@ -25,3 +25,6 @@
         content: |
           [yourserver]
           "{{ host_ip }}"
+    - name: This command will change the working directory to somedir/
+      ansible.builtin.shell:
+      cmd: YOURSERVER="{{ host_ip }}"
