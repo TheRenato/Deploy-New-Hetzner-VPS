@@ -59,10 +59,12 @@ createServer:
   before_script:
     - pip3 install hcloud
     - apk add openssh-client
+    - mkdir -p ~/.ssh
     - eval $(ssh-agent -s)
     #- echo "$SSH_KEY" | tr -d '\r' | ssh-add -
-    - ssh-add <(echo "$SSH_KEY" | base64 -d)
-    - mkdir -p ~/.ssh
+    #- ssh-add <(echo "$SSH_KEY" | base64 -d)
+    - echo "$SSH_KEY" | base64 --decode -i > ~/.ssh/id_rsa
+    - ssh-add ~/.ssh/id_rsa
     - chmod 700 ~/.ssh
   script:
     #- echo "$SSH_KEY" > ~/.ssh/id_rsa
