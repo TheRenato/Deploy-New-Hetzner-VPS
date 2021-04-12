@@ -9,3 +9,4 @@
     swap_file_state: present
   roles:
     - role: geerlingguy.swap
+...
