@@ -4,5 +4,6 @@
   vars:
     swap_file_size_mb: '2048'
     swap_swappiness: '80'
+    swap_file_state: present
   roles:
-    - geerlingguy.swap
+    - role: geerlingguy.swap
