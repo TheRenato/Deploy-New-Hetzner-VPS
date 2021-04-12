@@ -8,5 +8,5 @@
     swap_swappiness: '80'
     swap_file_state: present
   roles:
-    - role: geerlingguy.swap
+    - geerlingguy.swap
 ...
