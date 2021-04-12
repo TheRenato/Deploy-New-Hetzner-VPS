@@ -1,0 +1,9 @@
+- hosts: yourserver
+  become: yes
+  become_user: root
+
+  vars:
+    swap_file_size_mb: '2048'
+    swap_swappiness: '80'
+  roles:
+    - geerlingguy.swap

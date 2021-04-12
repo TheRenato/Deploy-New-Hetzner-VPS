@@ -61,6 +61,7 @@ createServer:
   before_script:
     - pip3 install hcloud
     - apk add openssh-client
+    - ansible-galaxy install geerlingguy.swap
     - mkdir -p ~/.ssh
     - eval $(ssh-agent -s)
     - echo "$SSH_KEY" | base64 -d > ~/.ssh/id_rsa
@@ -70,7 +71,8 @@ createServer:
     - ansible-playbook ansible-playbooks/createServer.yml
     - ansible-playbook ansible-playbooks/getServerIP.yml
     - export ANSIBLE_HOST_KEY_CHECKING=False
-    - ansible-playbook ansible-playbooks/create_server_user.yml -i ~/inventory.ini 
+    - ansible-playbook ansible-playbooks/create_swap.yml -i ~/inventory.ini
+    #- ansible-playbook ansible-playbooks/create_server_user.yml -i ~/inventory.ini 
     #- ansible-playbook ansible-playbooks/getServerInfoByName.yml
   only:
     variables:
