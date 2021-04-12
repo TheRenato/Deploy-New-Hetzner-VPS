@@ -9,6 +9,8 @@ stages:
 ansible-lint:
   stage: ansible-lint    
   only:
+    variables:
+      - $DO_THIS == null
     changes:
       - ansible-playbooks/*
   image:
