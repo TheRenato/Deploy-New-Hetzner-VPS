@@ -20,7 +20,9 @@ The HETZNER variables is set in the settings just so you don't need to look in t
 Go to: [Settings] -> [CI/CD] -> [Variables] to add/change those variables
 
 
-The only job that will run in evry commit is the ansible lint job.
+The only job that will run in every commit is the ansible lint job.
+
+## How to Run
 
 All other jobs must be run in [CI/CD] -> [Pipelines] -> [RUN] and with the right variable value.
 
