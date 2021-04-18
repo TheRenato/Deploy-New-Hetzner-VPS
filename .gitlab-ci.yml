@@ -25,7 +25,7 @@ getAllInfo:
     entrypoint: [""]
   script:
     - pip3 install hcloud
-    - ansible-playbook ansible-playbooks/start.yml
+    - ansible-playbook ansible-playbooks/getHetznerInfo/getAllInfo.yml
   only:
     variables:
       - $DO_THIS == "get all info"
@@ -38,7 +38,7 @@ getServer:
     entrypoint: [""]
   script:
     - pip3 install hcloud
-    - ansible-playbook ansible-playbooks/getServerInfoByName.yml
+    - ansible-playbook ansible-playbooks/getHetznerInfo/getServerInfoByName.yml
   only:
     variables:
       - $DO_THIS == "get info"
@@ -49,7 +49,7 @@ getServerIp:
     entrypoint: [""]
   script:
     - pip3 install hcloud
-    - ansible-playbook ansible-playbooks/getServerIP.yml
+    - ansible-playbook ansible-playbooks/getHetznerInfo/getServerIP.yml
   only:
     variables:
       - $DO_THIS == "get ip"
@@ -68,7 +68,7 @@ createServer:
     - ssh-add ~/.ssh/id_rsa
   script:
     - ansible-playbook ansible-playbooks/createServer.yml
-    - ansible-playbook ansible-playbooks/getServerIP.yml
+    - ansible-playbook ansible-playbooks/getHetznerInfo/getServerIP.yml
     - export ANSIBLE_HOST_KEY_CHECKING=False
     - ansible-playbook ansible-playbooks/create_swap.yml -i ~/inventory.ini
     #- ansible-playbook ansible-playbooks/create_server_user.yml -i ~/inventory.ini 
@@ -84,7 +84,7 @@ deleteServer:
   script:
     - pip3 install hcloud
     - ansible-playbook ansible-playbooks/destroyServer.yml
-    - ansible-playbook ansible-playbooks/getServerInfoByName.yml
+    - ansible-playbook ansible-playbooks/getHetznerInfo/getServerInfoByName.yml
   only:
     variables:
       - $DO_THIS == "delete server"
