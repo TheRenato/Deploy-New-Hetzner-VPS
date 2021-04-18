@@ -43,9 +43,18 @@ And that variable should have this values:
 **restart server**  To reboot/restart your server.
 
 
+## Done
+
+ * The server is created and can be deleted.
+ * SSH to server and make it do stuff.
+ * Add Swap file to the server.
+
 ## ToDo
 
- * SSH to server and make it do stuff.
- * Add Swap file to the server
- * Add backup job
- * Perform backups at x times
+ * Add backup job.
+ * Perform backups at x times.
+ * Structure the GitLab-Ci so it uses child pipelines instead. It will be easier to incorporate it to a new repo later.
+ * Seperate the creation of server and configuration.
+ * The option to Pre install Docker.
+ * The option to have a floating IP.
+ * The option to recreate server of backup.

@@ -9,7 +9,7 @@
     swap_enable: true
     swap_file_path: /swapfile
     swap_file_size_mb: 2048
-    swappiness: 80
+    swappiness: "80"
   tasks:
     - name: Configure swap
       when: swap_configure | bool | default(false)
