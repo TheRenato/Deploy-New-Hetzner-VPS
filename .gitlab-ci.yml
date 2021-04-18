@@ -70,7 +70,6 @@ createServer:
     - ansible-playbook ansible-playbooks/createServer.yml
     - ansible-playbook ansible-playbooks/getServerIP.yml
     - export ANSIBLE_HOST_KEY_CHECKING=False
-    - ansible-galaxy install geerlingguy.swap
     - ansible-playbook ansible-playbooks/create_swap.yml -i ~/inventory.ini
     #- ansible-playbook ansible-playbooks/create_server_user.yml -i ~/inventory.ini 
     #- ansible-playbook ansible-playbooks/getServerInfoByName.yml
