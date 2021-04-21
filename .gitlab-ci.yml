@@ -103,6 +103,14 @@ backupServer:
   image:
     name: cytopia/ansible:latest
     entrypoint: [""]
+  before_script:
+    - pip3 install hcloud
+    - apk add openssh-client
+    - mkdir -p ~/.ssh
+    - eval $(ssh-agent -s)
+    - echo "$SSH_KEY" | base64 -d > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - ssh-add ~/.ssh/id_rsa
   script:
     - pip3 install hcloud
     - ansible-galaxy collection install community.general
@@ -117,6 +125,14 @@ restoreServer:
   image:
     name: cytopia/ansible:latest
     entrypoint: [""]
+  before_script:
+    - pip3 install hcloud
+    - apk add openssh-client
+    - mkdir -p ~/.ssh
+    - eval $(ssh-agent -s)
+    - echo "$SSH_KEY" | base64 -d > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - ssh-add ~/.ssh/id_rsa
   script:
     - pip3 install hcloud
     - ansible-galaxy collection install community.general
