@@ -6,6 +6,7 @@ stages:
   - createServer
   - deleteServer
   - restartServer
+  - backupServer
 ansible-lint:
   stage: ansible-lint    
   only:
@@ -71,8 +72,6 @@ createServer:
     - ansible-playbook ansible-playbooks/getHetznerInfo/getServerIP.yml
     - export ANSIBLE_HOST_KEY_CHECKING=False
     - ansible-playbook ansible-playbooks/create_swap.yml -i ~/inventory.ini
-    #- ansible-playbook ansible-playbooks/create_server_user.yml -i ~/inventory.ini 
-    #- ansible-playbook ansible-playbooks/getServerInfoByName.yml
   only:
     variables:
       - $DO_THIS == "create server"
@@ -99,3 +98,31 @@ restartServer:
   only:
     variables:
       - $DO_THIS == "restart server"
+backupServer:
+  stage: backupServer
+  image:
+    name: cytopia/ansible:latest
+    entrypoint: [""]
+  script:
+    - pip3 install hcloud
+    - ansible-galaxy collection install community.general
+    - ansible-playbook ansible-playbooks/getHetznerInfo/getServerIP.yml
+    - export ANSIBLE_HOST_KEY_CHECKING=False
+    - ansible-playbook ansible-playbooks/createBackup.yml -i ~/inventory.ini
+  only:
+    variables:
+      - $DO_THIS == "backup server"
+restoreServer:
+  stage: restoreServer
+  image:
+    name: cytopia/ansible:latest
+    entrypoint: [""]
+  script:
+    - pip3 install hcloud
+    - ansible-galaxy collection install community.general
+    - ansible-playbook ansible-playbooks/getHetznerInfo/getServerIP.yml
+    - export ANSIBLE_HOST_KEY_CHECKING=False
+    - ansible-playbook ansible-playbooks/restoreBackup.yml -i ~/inventory.ini
+  only:
+    variables:
+      - $DO_THIS == "restore server"
