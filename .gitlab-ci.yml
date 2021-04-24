@@ -21,7 +21,7 @@ ansible-lint:
 getHetznerInfo:
   stage: getHetznerInfo
   trigger:
-    include: 'child-pipelines/.gitlab-ci.getHetznerInfo.yml'
+    include: 'child-pipelines/.gitlab-ci-getHetznerInfo.yml'
 createServer:
   stage: createServer
   image:
