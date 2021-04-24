@@ -20,6 +20,9 @@ ansible-lint:
     - ansible-lint ansible-playbooks/*
 getHetznerInfo:
   stage: getHetznerInfo
+  only:
+    variables:
+      - $DO_THIS == ^get 
   trigger:
     include: 'child-pipelines/.gitlab-ci-getHetznerInfo.yml'
 createServer:
