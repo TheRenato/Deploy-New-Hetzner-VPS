@@ -5,6 +5,7 @@ stages:
   - deleteServer
   - restartServer
   - backupServer
+  - restoreServer
 ansible-lint:
   stage: ansible-lint    
   only:
