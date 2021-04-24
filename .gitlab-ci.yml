@@ -1,8 +1,6 @@
 stages:
   - ansible-lint
-  - getAllInfo
-  - getServer
-  - getServerIp
+  - getHetznerInfo
   - createServer
   - deleteServer
   - restartServer
@@ -19,41 +17,10 @@ ansible-lint:
     entrypoint: ["/bin/sh", "-c"]
   script:
     - ansible-lint ansible-playbooks/*
-getAllInfo:
-  stage: getAllInfo
-  image:
-    name: cytopia/ansible:latest
-    entrypoint: [""]
-  script:
-    - pip3 install hcloud
-    - ansible-playbook ansible-playbooks/getHetznerInfo/getAllInfo.yml
-  only:
-    variables:
-      - $DO_THIS == "get all info"
-  #rules:
-  #  - if: $CI_COMMIT_TAG
-getServer:
-  stage: getServer
-  image:
-    name: cytopia/ansible:latest
-    entrypoint: [""]
-  script:
-    - pip3 install hcloud
-    - ansible-playbook ansible-playbooks/getHetznerInfo/getServerInfoByName.yml
-  only:
-    variables:
-      - $DO_THIS == "get info"
-getServerIp:
-  stage: getServerIp
-  image:
-    name: cytopia/ansible:latest
-    entrypoint: [""]
-  script:
-    - pip3 install hcloud
-    - ansible-playbook ansible-playbooks/getHetznerInfo/getServerIP.yml
-  only:
-    variables:
-      - $DO_THIS == "get ip"
+getHetznerInfo:
+  stage: getHetznerInfo
+  trigger:
+    include: 'child-pipelines/.gitlab-ci.getHetznerInfo.yml'
 createServer:
   stage: createServer
   image:
