@@ -1,7 +1,16 @@
 stages:
+  - testChildPipeline
   - getAllInfo
   - getServer
   - getServerIp
+testChildPipeline:
+  stage: testChildPipeline
+  image:
+    name: cytopia/ansible:latest
+    entrypoint: [""]
+  script:
+    - pip3 install hcloud
+    - echo "Hi all. this child is working"
 getAllInfo:
   stage: getAllInfo
   image:
