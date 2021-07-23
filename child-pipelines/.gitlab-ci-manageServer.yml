@@ -19,10 +19,11 @@ createServer:
     - ansible-playbook ansible-playbooks/manageServer/createServer.yml
     - ansible-playbook ansible-playbooks/getHetznerInfo/getServerIP.yml
     - export ANSIBLE_HOST_KEY_CHECKING=False
+    - ansible-playbook ansible-playbooks/manageServer/updateServer.yml -i ~/inventory.ini
     - ansible-playbook ansible-playbooks/manageServer/create_swap.yml -i ~/inventory.ini
   only:
     variables:
-      - $DO_THIS == "create server"
+      - $DO_THIS == "server create"
 deleteServer:
   stage: deleteServer
   image:
@@ -34,7 +35,7 @@ deleteServer:
     - ansible-playbook ansible-playbooks/getHetznerInfo/getServerInfoByName.yml
   only:
     variables:
-      - $DO_THIS == "delete server"
+      - $DO_THIS == "server delete"
 restartServer:
   stage: restartServer
   image:
@@ -45,4 +46,4 @@ restartServer:
     - ansible-playbook ansible-playbooks/manageServer/restartServer.yml
   only:
     variables:
-      - $DO_THIS == "restart server"
+      - $DO_THIS == "server restart"

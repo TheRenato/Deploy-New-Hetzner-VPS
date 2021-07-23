@@ -38,11 +38,11 @@ And that variable should have this values:
 
 **get ip**          To get server IP and it will save it as a variable *host_ip*.
 
-**create server**   To create your server
+**server create**   To create your server
 
-**delete server**   To delete your server
+**server delete**   To delete your server
 
-**restart server**  To reboot/restart your server.
+**server restart**  To reboot/restart your server.
 
 
 ## Done
