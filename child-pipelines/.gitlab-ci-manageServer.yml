@@ -1,1 +1,48 @@
-
+stages:
+  - createServer
+  - deleteServer
+  - restartServer
+createServer:
+  stage: createServer
+  image:
+    name: cytopia/ansible:latest
+    entrypoint: [""]
+  before_script:
+    - pip3 install hcloud
+    - apk add openssh-client
+    - mkdir -p ~/.ssh
+    - eval $(ssh-agent -s)
+    - echo "$SSH_KEY" | base64 -d > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - ssh-add ~/.ssh/id_rsa
+  script:
+    - ansible-playbook ansible-playbooks/manageServer/createServer.yml
+    - ansible-playbook ansible-playbooks/getHetznerInfo/getServerIP.yml
+    - export ANSIBLE_HOST_KEY_CHECKING=False
+    - ansible-playbook ansible-playbooks/manageServer/create_swap.yml -i ~/inventory.ini
+  only:
+    variables:
+      - $DO_THIS == "create server"
+deleteServer:
+  stage: deleteServer
+  image:
+    name: cytopia/ansible:latest
+    entrypoint: [""]
+  script:
+    - pip3 install hcloud
+    - ansible-playbook ansible-playbooks/manageServer/destroyServer.yml
+    - ansible-playbook ansible-playbooks/getHetznerInfo/getServerInfoByName.yml
+  only:
+    variables:
+      - $DO_THIS == "delete server"
+restartServer:
+  stage: restartServer
+  image:
+    name: cytopia/ansible:latest
+    entrypoint: [""]
+  script:
+    - pip3 install hcloud
+    - ansible-playbook ansible-playbooks/manageServer/restartServer.yml
+  only:
+    variables:
+      - $DO_THIS == "restart server"

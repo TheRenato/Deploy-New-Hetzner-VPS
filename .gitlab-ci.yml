@@ -1,9 +1,7 @@
 stages:
   - ansible-lint
   - getHetznerInfo
-  - createServer
-  - deleteServer
-  - restartServer
+  - manageServer
   - backupServer
   - restoreServer
 ansible-lint:
@@ -29,50 +27,18 @@ getHetznerInfo:
   trigger:
     include: 'child-pipelines/.gitlab-ci-getHetznerInfo.yml'
     strategy: depend
-createServer:
-  stage: createServer
-  image:
-    name: cytopia/ansible:latest
-    entrypoint: [""]
-  before_script:
-    - pip3 install hcloud
-    - apk add openssh-client
-    - mkdir -p ~/.ssh
-    - eval $(ssh-agent -s)
-    - echo "$SSH_KEY" | base64 -d > ~/.ssh/id_rsa
-    - chmod 600 ~/.ssh/id_rsa
-    - ssh-add ~/.ssh/id_rsa
-  script:
-    - ansible-playbook ansible-playbooks/createServer.yml
-    - ansible-playbook ansible-playbooks/getHetznerInfo/getServerIP.yml
-    - export ANSIBLE_HOST_KEY_CHECKING=False
-    - ansible-playbook ansible-playbooks/create_swap.yml -i ~/inventory.ini
+manageServer:
+  stage: manageServer
+  variables:
+    API_HETZNER: $API_HETZNER
+    DO_THIS: $DO_THIS
+    SSH_KEY: $SSH_KEY
   only:
     variables:
-      - $DO_THIS == "create server"
-deleteServer:
-  stage: deleteServer
-  image:
-    name: cytopia/ansible:latest
-    entrypoint: [""]
-  script:
-    - pip3 install hcloud
-    - ansible-playbook ansible-playbooks/destroyServer.yml
-    - ansible-playbook ansible-playbooks/getHetznerInfo/getServerInfoByName.yml
-  only:
-    variables:
-      - $DO_THIS == "delete server"
-restartServer:
-  stage: restartServer
-  image:
-    name: cytopia/ansible:latest
-    entrypoint: [""]
-  script:
-    - pip3 install hcloud
-    - ansible-playbook ansible-playbooks/restartServer.yml
-  only:
-    variables:
-      - $DO_THIS == "restart server"
+      - $DO_THIS =~ /^server */
+  trigger:
+    include: 'child-pipelines/.gitlab-ci-manageServer.yml'
+    strategy: depend
 backupServer:
   stage: backupServer
   image:
