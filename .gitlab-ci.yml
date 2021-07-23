@@ -27,7 +27,7 @@ getHetznerInfo:
     variables:
       - $DO_THIS =~ /^get */
   trigger:
-    include: 'child-pipelines/.gitlab-ci-getHetznerInfo.yml'
+    include: './child-pipelines/.gitlab-ci-getHetznerInfo.yml'
     strategy: depend
 createServer:
   stage: createServer
