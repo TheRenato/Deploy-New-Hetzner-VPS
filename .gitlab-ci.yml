@@ -20,6 +20,9 @@ ansible-lint:
     - ansible-lint ansible-playbooks/*
 getHetznerInfo:
   stage: getHetznerInfo
+  variables:
+    API_HETZNER: $API_HETZNER
+    DO_THIS: $DO_THIS
   only:
     variables:
       - $DO_THIS =~ /^get */
