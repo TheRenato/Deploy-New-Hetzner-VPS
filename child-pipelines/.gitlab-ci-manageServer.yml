@@ -21,6 +21,7 @@ createServer:
     - export ANSIBLE_HOST_KEY_CHECKING=False
     - ansible-playbook ansible-playbooks/manageServer/updateServer.yml -i ~/inventory.ini
     - ansible-playbook ansible-playbooks/manageServer/create_swap.yml -i ~/inventory.ini
+    - ansible-playbook ansible-playbooks/getHetznerInfo/getServerInfoByName.yml
   only:
     variables:
       - $DO_THIS == "server create"
