@@ -65,4 +65,5 @@ And that variable should have this values:
  * Add backup job.
  * Perform backups at x times.
  * The option to recreate server of backup.
+ * You tell me
 

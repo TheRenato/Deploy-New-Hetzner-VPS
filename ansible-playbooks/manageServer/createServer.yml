@@ -3,6 +3,7 @@
   vars:
       api_key: "{{ lookup('env','API_HETZNER') }}"
       server_name: "{{ lookup('env','CI_PROJECT_NAME') }}"
+      server_type: "{{ lookup('env','HETZNER_SERVER_TYPE') }}"
   collections:
     - hetzner.hcloud
   tasks:
@@ -10,7 +11,7 @@
       hetzner.hcloud.hcloud_server:
         api_token: "{{ api_key }}"
         name: "{{ server_name }}"
-        server_type: cx11
+        server_type: "{{ server_type }}"
         image: ubuntu-18.04
         location: hel1
         ssh_keys:
